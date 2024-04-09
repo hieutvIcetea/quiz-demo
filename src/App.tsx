@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import { Button } from "./components/ui/button";
 import toast, { Toaster } from "react-hot-toast";
-import { MainButton, init, postEvent, InitData } from "@tma.js/sdk";
+import { MainButton, init, InitData } from "@tma.js/sdk";
 // import WebAppUser from "@twa-dev/sdk";
 // import { webApp } from "node_modules/telegraf/typings/button";
 // import WheelComponent from "./components/Wheel";
@@ -42,12 +42,11 @@ function App() {
 
   const mainButton = new MainButton({
     backgroundColor: "#aaddfe",
-    isEnabled: false,
+    isEnabled: true,
     isVisible: false,
     isLoaderVisible: false,
     text: "SUBMIT",
     textColor: "#ffffff",
-    postEvent,
   });
 
   useEffect(() => {
