@@ -34,9 +34,11 @@ function App() {
 
   useEffect(() => {
     if (question === 3) {
-      WebApp.MainButton.text = "Main button";
+      WebApp.MainButton.text = "Submit";
       WebApp.MainButton.show();
-      WebApp.MainButton.onClick(() => WebApp.close);
+      WebApp.MainButton.onClick(() => {
+        toast.success("Congrats for completing our quiz!");
+      });
     }
   }, [question]);
 
