@@ -3,10 +3,10 @@ import "./App.css";
 import { Button } from "./components/ui/button";
 import toast, { Toaster } from "react-hot-toast";
 import WebApp from "@twa-dev/sdk";
-import WheelComponent from "./components/Wheel";
+// import WheelComponent from "./components/Wheel";
 
-const segments = ["Happy", "Angry", "Sad", "Frustration", "Emptyness", "Hehe"];
-const segColors = ["#000", "#FFF", "#000", "#FFF", "#000", "#FFF"];
+// const segments = ["Happy", "Angry", "Sad", "Frustration", "Emptyness", "Hehe"];
+// const segColors = ["#000", "#FFF", "#000", "#FFF", "#000", "#FFF"];
 
 const QUIZ = {
   quiz_title: "Science Quiz",
@@ -32,9 +32,9 @@ const QUIZ = {
 function App() {
   const [question, setQuestion] = useState(0);
 
-  const onFinished = (winner: string) => {
-    console.log(winner);
-  };
+  // const onFinished = (winner: string) => {
+  //   console.log(winner);
+  // };
 
   useEffect(() => {
     WebApp.ready();
@@ -62,7 +62,7 @@ function App() {
     <div className="flex items-center justify-center mt-20">
       <Toaster />
 
-      <WheelComponent
+      {/* <WheelComponent
         segments={segments}
         segColors={segColors}
         winningSegment=""
@@ -75,7 +75,7 @@ function App() {
         size={190}
         upDuration={50}
         downDuration={2000}
-      />
+      /> */}
       <div className="flex flex-col gap-6">
         {WebApp.initData}
         {question < 3 && (
