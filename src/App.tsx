@@ -30,15 +30,14 @@ function App() {
 
   useEffect(() => {
     WebApp.ready();
-    WebApp.showAlert("Hey there!");
-  });
+  }, []);
 
-  // useEffect(() => {
-  //   if (question === 3) {
-  //     WebApp.MainButton.text = "Main button";
-  //     WebApp.MainButton.show();
-  //   }
-  // }, [question]);
+  useEffect(() => {
+    if (question === 3) {
+      WebApp.MainButton.text = "Main button";
+      WebApp.MainButton.show();
+    }
+  }, [question]);
 
   const submitAnswer = (answer: string) => {
     if (QUIZ.questions[question].answer === answer) {
