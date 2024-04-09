@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import { Button } from "./components/ui/button";
-import toast from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 
 const QUIZ = {
   quiz_title: "Science Quiz",
@@ -48,12 +48,14 @@ function App() {
 
   return (
     <div className="flex items-center justify-center mt-20">
+      <Toaster />
       <div className="flex flex-col gap-6">
         {question < 3 && (
           <>
             <h1>{QUIZ.questions[question].question}</h1>
             {QUIZ.questions[question].options.map((item) => (
               <Button
+                key={item}
                 className="px-3 py-2 border rounded w-fit bg-slate-300 hover:bg-emerald-400"
                 onClick={() => submitAnswer(item)}
               >
