@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import { Button } from "./components/ui/button";
 import toast, { Toaster } from "react-hot-toast";
-import WebApp from "@twa-dev/sdk";
+import { MainButton, init, postEvent, InitData } from "@tma.js/sdk";
 // import WebAppUser from "@twa-dev/sdk";
 // import { webApp } from "node_modules/telegraf/typings/button";
 // import WheelComponent from "./components/Wheel";
@@ -34,22 +34,34 @@ const QUIZ = {
 function App() {
   const [question, setQuestion] = useState(0);
 
+  const { miniApp } = init();
+
   // const onFinished = (winner: string) => {
   //   console.log(winner);
   // };
 
+  const mainButton = new MainButton({
+    backgroundColor: "#aaddfe",
+    isEnabled: false,
+    isVisible: false,
+    isLoaderVisible: false,
+    text: "SUBMIT",
+    textColor: "#ffffff",
+    postEvent,
+  });
+
   useEffect(() => {
-    WebApp.ready();
+    miniApp.ready();
   }, []);
 
   useEffect(() => {
     if (question === 3) {
-      WebApp.MainButton.text = "Submit";
-      WebApp.MainButton.show();
-      WebApp.MainButton.onClick(() => {
+      mainButton.show();
+      mainButton.on("click", () => {
         toast.success("Congrats for completing our quiz!");
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [question]);
 
   const submitAnswer = (answer: string) => {
@@ -87,7 +99,7 @@ function App() {
       /> */}
       <div className="flex flex-col gap-6">
         {/* {JSON.stringify(converted)} */}
-        {JSON.stringify(WebApp.initDataUnsafe.user)}
+        <div className="max-w-[100%]">{JSON.stringify(InitData)}</div>
         {question < 3 && (
           <>
             <h1>{QUIZ.questions[question].question}</h1>
