@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import { Button } from "./components/ui/button";
 import toast, { Toaster } from "react-hot-toast";
-import { MainButton, init, InitData } from "@tma.js/sdk";
+import { MainButton, init, retrieveLaunchParams } from "@tma.js/sdk";
 // import WebAppUser from "@twa-dev/sdk";
 // import { webApp } from "node_modules/telegraf/typings/button";
 // import WheelComponent from "./components/Wheel";
@@ -53,6 +53,8 @@ function App() {
     miniApp.ready();
   }, []);
 
+  const { initDataRaw } = retrieveLaunchParams();
+
   useEffect(() => {
     if (question === 3) {
       mainButton.show();
@@ -98,7 +100,7 @@ function App() {
       /> */}
       <div className="flex flex-col gap-6">
         {/* {JSON.stringify(converted)} */}
-        <div className="max-w-[100%]">{JSON.stringify(InitData)}</div>
+        <div className="max-w-[100%]">{JSON.stringify(initDataRaw)}</div>
         {question < 3 && (
           <>
             <h1>{QUIZ.questions[question].question}</h1>
