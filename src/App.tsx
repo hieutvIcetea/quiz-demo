@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import { Button } from "./components/ui/button";
 import WebApp from "@twa-dev/sdk";
+import toast from "react-hot-toast";
 
 const QUIZ = {
   quiz_title: "Science Quiz",
@@ -43,8 +44,7 @@ function App() {
       setQuestion(question + 1);
       return;
     }
-
-    alert("wrong");
+    toast.error("wrong answer");
   };
 
   return (
