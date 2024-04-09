@@ -3,6 +3,8 @@ import "./App.css";
 import { Button } from "./components/ui/button";
 import toast, { Toaster } from "react-hot-toast";
 import WebApp from "@twa-dev/sdk";
+import WebAppUser from "@twa-dev/sdk";
+import { webApp } from "node_modules/telegraf/typings/button";
 // import WheelComponent from "./components/Wheel";
 
 // const segments = ["Happy", "Angry", "Sad", "Frustration", "Emptyness", "Hehe"];
@@ -58,12 +60,12 @@ function App() {
     toast.error("wrong answer");
   };
 
-  const converted = JSON.parse(
-    '{"' + WebApp.initData.replace(/&/g, '","').replace(/=/g, '":"') + '"}',
-    function (key, value) {
-      return key === "" ? value : decodeURIComponent(value);
-    }
-  );
+  // const converted = JSON.parse(
+  //   '{"' + WebApp.initData.replace(/&/g, '","').replace(/=/g, '":"') + '"}',
+  //   function (key, value) {
+  //     return key === "" ? value : decodeURIComponent(value);
+  //   }
+  // );
 
   return (
     <div className="flex items-center justify-center mt-20">
@@ -84,7 +86,8 @@ function App() {
         downDuration={2000}
       /> */}
       <div className="flex flex-col gap-6">
-        {JSON.stringify(converted)}
+        {/* {JSON.stringify(converted)} */}
+        {JSON.stringify(WebApp.initDataUnsafe.user)}
         {question < 3 && (
           <>
             <h1>{QUIZ.questions[question].question}</h1>
