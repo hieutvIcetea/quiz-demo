@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import { Button } from "./components/ui/button";
+import WebApp from "@twa-dev/sdk";
 
 const QUIZ = {
   quiz_title: "Science Quiz",
@@ -26,9 +27,19 @@ const QUIZ = {
 function App() {
   const [question, setQuestion] = useState(0);
 
+  useEffect(() => {
+    WebApp.ready();
+  });
+
+  useEffect(() => {
+    if (question === 3) {
+      WebApp.MainButton.text = "Main button";
+      WebApp.MainButton.show();
+    }
+  }, [question]);
+
   const submitAnswer = (answer: string) => {
     if (QUIZ.questions[question].answer === answer) {
-      alert("correct");
       setQuestion(question + 1);
       return;
     }

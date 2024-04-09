@@ -27,6 +27,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"],
+  "include": ["src", "Bot/bot.js"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
