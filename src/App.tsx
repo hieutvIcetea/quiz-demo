@@ -3,8 +3,8 @@ import "./App.css";
 import { Button } from "./components/ui/button";
 import toast, { Toaster } from "react-hot-toast";
 import WebApp from "@twa-dev/sdk";
-import WebAppUser from "@twa-dev/sdk";
-import { webApp } from "node_modules/telegraf/typings/button";
+// import WebAppUser from "@twa-dev/sdk";
+// import { webApp } from "node_modules/telegraf/typings/button";
 // import WheelComponent from "./components/Wheel";
 
 // const segments = ["Happy", "Angry", "Sad", "Frustration", "Emptyness", "Hehe"];
