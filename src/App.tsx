@@ -36,6 +36,7 @@ function App() {
     if (question === 3) {
       WebApp.MainButton.text = "Main button";
       WebApp.MainButton.show();
+      WebApp.MainButton.onClick(() => WebApp.close);
     }
   }, [question]);
 
