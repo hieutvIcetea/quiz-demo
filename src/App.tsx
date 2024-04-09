@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import { Button } from "./components/ui/button";
 import toast, { Toaster } from "react-hot-toast";
+import WebApp from "@twa-dev/sdk";
 
 const QUIZ = {
   quiz_title: "Science Quiz",
@@ -27,9 +28,10 @@ const QUIZ = {
 function App() {
   const [question, setQuestion] = useState(0);
 
-  // useEffect(() => {
-  //   WebApp.ready();
-  // });
+  useEffect(() => {
+    WebApp.ready();
+    WebApp.showAlert("Hey there!");
+  });
 
   // useEffect(() => {
   //   if (question === 3) {
