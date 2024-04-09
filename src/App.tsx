@@ -58,6 +58,13 @@ function App() {
     toast.error("wrong answer");
   };
 
+  const converted = JSON.parse(
+    '{"' + WebApp.initData.replace(/&/g, '","').replace(/=/g, '":"') + '"}',
+    function (key, value) {
+      return key === "" ? value : decodeURIComponent(value);
+    }
+  );
+
   return (
     <div className="flex items-center justify-center mt-20">
       <Toaster />
@@ -77,7 +84,7 @@ function App() {
         downDuration={2000}
       /> */}
       <div className="flex flex-col gap-6">
-        {WebApp.initData}
+        {JSON.stringify(converted)}
         {question < 3 && (
           <>
             <h1>{QUIZ.questions[question].question}</h1>
