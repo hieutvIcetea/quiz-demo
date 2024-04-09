@@ -53,7 +53,7 @@ function App() {
     miniApp.ready();
   }, []);
 
-  const { initDataRaw } = retrieveLaunchParams();
+  const { initData } = retrieveLaunchParams();
 
   useEffect(() => {
     if (question === 3) {
@@ -100,7 +100,7 @@ function App() {
       /> */}
       <div className="flex flex-col gap-6">
         {/* {JSON.stringify(converted)} */}
-        <div className="max-w-[100%]">{JSON.stringify(initDataRaw)}</div>
+        {JSON.stringify(initData)}
         {question < 3 && (
           <>
             <h1>{QUIZ.questions[question].question}</h1>
